@@ -38,8 +38,21 @@ const getUserClasses = async (req, res) => {
   }
 };
 
+const viewSpecificClass = async (req, res) => {
+  try {
+    const currentClass = await Class.findById(req.params.classId);
+
+    res.status(200).send(currentClass);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
+
+
+
 module.exports = {
   getAllClasses,
   createNewClass,
   getUserClasses,
+  viewSpecificClass,
 };

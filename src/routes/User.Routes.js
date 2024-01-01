@@ -7,12 +7,14 @@ const {
   getAllUsers,
   updateUser,
   getUser,
+  getAllStudents,
 } = require("../controllers/User.Controllers");
 
 // API ROUTER
 const userRouter = express.Router();
 
 userRouter.get("/users", getAllUsers);
+userRouter.get("/students", getAllStudents);
 userRouter.get("/user/:userId", getUser);
 
 userRouter.post("/users/register", addUser);

@@ -10,6 +10,15 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+const getAllStudents = async (req, res) => {
+  try {
+    const allStudents = await User.find({ userType: "Student" });
+    res.status(200).send(allStudents);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
+
 const addUser = async (req, res) => {
   try {
     const user = await new User(req.body);
@@ -48,8 +57,6 @@ const logOut = async (req, res) => {
   }
 };
 
-
-
 const updateUser = async (req, res) => {
   const userId = req.body.userId;
   const { email, firstName, lastName } = req.body;
@@ -87,4 +94,5 @@ module.exports = {
   getAllUsers,
   updateUser,
   getUser,
+  getAllStudents,
 };
